@@ -1,0 +1,70 @@
+print("My Un-Hackable")
+print("Calculator")
+print("")
+print("+---------+")
+print("|   123.5 |")
+print("+---------+")
+print("| 7 8 9 X |")		
+print("| 4 5 6 % |")
+print("| 1 2 3 - |")
+print("|   0   + |")
+print("+---------+")
+print("")
+
+repeatYN = "Y"
+runningTape = []
+currentOutput = ""
+
+while repeatYN.upper() == "Y":
+    firstNumber = input("Enter your first number: ")
+    secondNumber= input("Enter your second number: ")
+    calculation = input("Enter calculation type +-*/: ")
+    
+    areAllInputsCorrect = 1
+    calculationResult = 0
+    calculationName = ""
+    
+    if not firstNumber.isdigit():
+        areAllInputsCorrect = 0
+    
+    if not secondNumber.isdigit():
+        areAllInputsCorrect = 0
+    
+    if not (calculation == "+" or calculation == "-" 
+        or calculation == "*" or calculation == "/"):
+        areAllInputsCorrect = 0
+    
+    if areAllInputsCorrect == 0:
+        print("Oops! Something went wrong! Please try again.")
+    else:
+        firstNumber = int(firstNumber)
+        secondNumber = int(secondNumber)
+        if calculation == "+":
+            result = firstNumber + secondNumber
+            calculationName = "add"
+        elif calculation == "-":
+            result = firstNumber - secondNumber
+            calculationName = "subtract"
+        elif calculation == "*":
+            result = firstNumber * secondNumber
+            calculationName = "multiply"
+        else:
+            result = firstNumber / secondNumber
+            calculationName = "divide"
+    
+        currentOutput = "You have asked me to " + calculationName + " number " + str(firstNumber) + " with number " + str(secondNumber) + ". The result is " + str(result) + ". "
+        
+        print(currentOutput)
+    	
+        runningTape.append(str(firstNumber) + " " + calculation + " " + str(secondNumber) + " = " + str(result))
+    
+        print("---^^^^^^^^^^^^^^^^^^^^^^^^^^---")
+        for x in runningTape:
+            print(x)
+        print("---vvvvvvvvvvvvvvvvvvvvvvvvvv---")
+    	
+    print()
+    repeatYN = input("Press Y to calculate or any key to exit ")
+    if repeatYN.upper() == "N":
+        break
+            
