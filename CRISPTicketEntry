@@ -1,0 +1,42 @@
+import datetime
+
+requestDate = datetime.date.today() + datetime.timedelta(days=0)
+requestDateFormated = requestDate.strftime('%d-%m-%Y')
+
+print("===========================================")
+print("REPORT REQUEST FORM")
+print("Date: ", requestDateFormated)
+print("===========================================")
+
+requestedBy = input("Requested By: ")
+department = input("Department: ")
+reportDescription = input("Report Description: ")
+daysToComplete = input("Days to Complete: ")
+
+requestDate = datetime.date.today() + datetime.timedelta(days=int(daysToComplete))
+requestDateFormated = requestDate.strftime('%d-%m-%Y')
+
+sysOutput1 = requestedBy + " from " + department + " department requested " 
+sysOutput1 += reportDescription + " in " + daysToComplete + " from today "
+sysOutput1 += "(" + requestDateFormated + ")."
+print(sysOutput1)
+
+print("")
+print("")
+print("===========================================")
+print("REPORT ASSIGNMENT")
+print("===========================================")
+
+sqlCode = input("SQL Code: ")
+assignedTo = input("Assigned To: ")
+evaluationDays = input("Evaluation Days: ")
+
+deadline = int(daysToComplete) - int(evaluationDays)
+requestDate = datetime.date.today() + datetime.timedelta(days=deadline)
+requestDateFormated = requestDate.strftime('%d-%m-%Y')
+
+sysOutput2 = assignedTo + ", I would like a report using the SQL script below. "
+sysOutput2 += "Deadline: " + str(deadline) + " days "
+sysOutput2 += "(" + requestDateFormated + ")."
+
+print(sysOutput2)
